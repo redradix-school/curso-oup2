@@ -1,0 +1,49 @@
+{
+  "id": "los-músicos-de-bremen",
+  "title": "Los músicos de Bremen",
+  "price": {
+    "currency": "USD",
+    "amount": 1700
+  },
+  "available": true,
+  "description": "Nuevo concepto de libro digital diseñado para su uso en dispositivos electrónicos. Se ha desarrollado con una navegación optimizada para enriquecer el aprendizaje en estos soportes. Incorpora el portafolio digital del alumno y actividades interactivas. Es compatible con tabletas y se integra con la plataforma de Blink. Para acceder al contenido se debe activar la licencia de compra en www.blinklearning.com tras haberse registrado (uso únicamente online) o a través de la aplicación gratuita de Blink (disponible para Windows, Mac OS X, Linux, Google Play, App Store, Chrome Web Store y Windows Store) para acceso con o sin conexión a Internet.  Necesaria conexión a Internet para la descarga previa de contenidos para su posterior uso sin conexión. Algunos contenidos extra requieren conexión a Internet.\nRequisitos mínimos. Para ordenador de escritorio: Sistema operativo recomendado Windows Vista, 7, 8, Mac OS X 10.6.8 o superior, ChromeOS, y Linux posterior a 2012. Pantalla de 1024x768px o superior y tamaño superior a 11\", procesador 1GHz doble núcleo o superior, 2 GB de RAM, 120 MB memoria gráfica, 8GB de espacio libre en disco duro. Complementos necesarios: Acrobat Reader y Adobe Flash Player.  Para tabletas: iPad 2 con 16GB e iOS 6 o superior, Android 4.0.3 con 8GB con procesador Dual Core o superior, Microsoft Surface con Windows 8.1, 16GB de almacenamiento interno y 2GB de memoria RAM. Pantalla de 1024x768px o superior a 11 pulgadas. Navegadores recomendados: Mozilla Firefox actualizado, Google Chrome actualizado, Apple Safari actualizado. Integración en plataformas educativas: Plataforma compatible con Marsupial v2.",
+  "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/losmusicosdebremennacional/Imagen%20para%20Visores/musico_bremen_mudo_portadas.jpg",
+  "relatedProducts": [
+    {
+      "id": "el-traje-nuevo-del-emperador",
+      "title": "El traje nuevo del emperador",
+      "price": {
+        "currency": "USD",
+        "amount": 1000
+      },
+      "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/eltrajenuevodelemperador/Imagen%20para%20Visores/traje_nuevo_emperador_portada.jpg"
+    },
+    {
+      "id": "la-bella-durmiente",
+      "title": "La bella durmiente",
+      "price": {
+        "currency": "USD",
+        "amount": 1400
+      },
+      "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/labelladurmientenacional/Imagen%20para%20Visores/cuentosla_bella_durmiente_portadas.jpg"
+    },
+    {
+      "id": "la-cenicienta",
+      "title": "La Cenicienta",
+      "price": {
+        "currency": "USD",
+        "amount": 1800
+      },
+      "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/lacenicienta/Imagen%20para%20Visores/cenicienta_portada.jpg"
+    },
+    {
+      "id": "la-historia-de-los-tres-cerditos",
+      "title": "La historia de los tres cerditos",
+      "price": {
+        "currency": "USD",
+        "amount": 1200
+      },
+      "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/lahistoriadelostrescerditosnacional/Imagen%20para%20Visores/tres_cerditos_mudo_portadas.jpg"
+    }
+  ]
+}

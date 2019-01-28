@@ -160,7 +160,7 @@ h1,h2,h3,h4,h5 {
   transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.button.full-width {
+.button.fullwidth {
     width: 100%;
 }
 
@@ -494,10 +494,17 @@ select {
   width: 30px;
   height: 30px;
   text-align: center;
+  vertical-align: top;
   font-size: 14px;
   cursor: pointer;
   outline: none;
-  padding: 6px 0;
+  padding: 0;
+}
+
+.action-remove span {
+    position: relative;
+    bottom: 1px;
+    left: 0.5px;
 }
 
 .action-remove:hover {

@@ -1,161 +1,106 @@
-import React, { Fragment } from 'react'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { mapValues, some, values as objValues } from 'lodash'
+import { injectIntl } from 'react-intl'
+import { isRequired } from '../../lib/validations'
+import AppLayout from '../layouts/AppLayout'
+import VerticalSeparator from '../atoms/VerticalSeparator'
+import IntroTitle from '../molecules/IntroTitle'
+import Card from '../molecules/Card'
+import AddressForm from '../organisms/AddressForm'
+import DeliveryMethodSelector from '../organisms/DeliveryMethodSelector'
+import OrderSummary from '../organisms/OrderSummary'
+import Button from '../atoms/Button'
 
-const Checkout = () => (
-  <Fragment>
+const validations = {
+  'first-name': [isRequired],
+  'last-name': [isRequired],
+  'address1': [isRequired],
+  'address2': [],
+  'pcode': [isRequired],
+  'city': [isRequired],
+  'state': [isRequired],
+  'country': [isRequired],
+  'phone': [isRequired],
+  'email': [isRequired]
+}
 
-    <div className="header">
-      <div className="wrapper">
-        <div className="logo">logo</div>
-        <ul className="actions">
-          <li>Shop</li>
-          <li>Cart (0)</li>
-        </ul>
+function hasErrors(field, value) {
+  /* reusable if we pass validations as param */
+  if (validations[field]) {
+    return validations[field]
+      .map(validation => validation(value))
+      .filter(error => error !== undefined)
+      .shift()
+  }
+}
+
+function formHandler(validations) {
+  /* reusable for every similar form! */
+  const [values, setValues] = useState({})
+  const [errors, setErrors] = useState({})
+  const onFieldChange = (name, value) => {
+    const error = hasErrors(name, value)
+    setValues({ ...values, [name]: value })
+    setErrors({ ...errors, [name]: error })
+  }
+  const validateAll = () => {
+    const errors = mapValues(
+      validations, (_, field) => hasErrors(field, values[field])
+    )
+    setErrors(errors)
+    return some(objValues(errors))
+  }
+  return [values, errors, onFieldChange, validateAll]
+}
+
+const Checkout = ({ shoppingCart, intl, onCheckout }) => {
+  const [values, errors, onFieldChange, validateAll] = formHandler(validations)
+  const [deliveryMethod, onDeliveryMethodChange] = useState('standard')
+  const checkoutAction = () => {
+    if (!validateAll()) onCheckout({ ...values, deliveryMethod })
+  }
+  return (
+    <AppLayout className="checkout-page" shoppingCart={shoppingCart}>
+
+      <div className="checkout-forms">
+        <VerticalSeparator />
+        <IntroTitle
+          title={intl.formatMessage({ id: 'title:delivery-address' })}
+          subtitle={intl.formatMessage({ id: 'title:enter-address' })}/>
+        <VerticalSeparator />
+        <AddressForm values={values}
+                     errors={errors}
+                     onFieldChange={onFieldChange} />
       </div>
-    </div>
 
-    <div className="main-content wrapper">
-      <div className="checkout-page">
+      <div className="checkout-summary">
 
-        <div className="checkout-forms">
+        <Card transparent>
+          <IntroTitle
+            title={intl.formatMessage({ id: 'title:delivery-method' })}
+            subtitle={intl.formatMessage({ id: 'title:messenger' })} />
+          <VerticalSeparator />
+          <DeliveryMethodSelector deliveryMethod={deliveryMethod}
+                                  onDeliveryMethodChange={onDeliveryMethodChange}/>
+        </Card>
 
-          <div className="vertical-separator"/>
-          <div className="intro-title">
-            <h1 className="beta">Delivery Address</h1>
-            <p className="subtitle">Enter your address info</p>
-          </div>
-
-          <div className="vertical-separator"/>
-
-          <div className="form-group">
-
-            <div className="field error half">
-              <label>First Name</label>
-              <input type="text"/>
-              <span className="error-message">Some error</span>
-            </div>
-
-            <div className="field half">
-              <label>Last Name</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field">
-              <label>Address (line 1)</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field">
-              <label>Address (line 2)</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>Postal Code</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>City/Town</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>State/Province</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>Country</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>Phone</label>
-              <input type="text"/>
-            </div>
-
-            <div className="field half">
-              <label>Email</label>
-              <input type="text"/>
-            </div>
-
-          </div>
-
-
-        </div>
-
-        <div className="checkout-summary">
-
-          <div className="transparent-card">
-            <div className="intro-title">
-              <h1 className="beta">Delivery Method</h1>
-              <p className="subtitle">Messenger service</p>
-            </div>
-
-            <div className="vertical-separator"/>
-
-            <div className="form-group radio-group">
-
-              <label className="radio-label">
-                <input type="radio" name="delivery" id="radio1"/>
-                <span>Standard</span>
-              </label>
-
-              <label className="radio-label">
-                <input type="radio" name="delivery" id="radio2"/>
-                <span>Priority Mail</span>
-              </label>
-
-              <label className="radio-label">
-                <input type="radio" name="delivery" id="radio3"/>
-                <span>Express</span>
-              </label>
-
-            </div>
-
-          </div>
-
-          <div className="vertical-separator"/>
-
-          <div className="grey-card">
-
-            <h1 className="beta">Your Order</h1>
-            <span className="subtitle">Order details</span>
-
-            <div className="vertical-separator"/>
-
-            <div className="row">
-              <span className="label">Some Product</span>
-              <span className="value">$119.99</span>
-            </div>
-
-            <div className="row">
-              <span className="label">Shipping</span>
-              <span className="value">Free</span>
-            </div>
-
-            <div className="row">
-              <span className="label bold">Total</span>
-              <span className="value bold">$119.99</span>
-            </div>
-
-          </div>
-
-          <div className="button"><span>Purchase</span></div>
-
-        </div>
+        <VerticalSeparator />
+        <OrderSummary shoppingCart={shoppingCart}
+                      title={intl.formatMessage({ id: 'title:order-summary' })}
+                      subtitle={intl.formatMessage({ id: 'title:review-order' })}/>
+        <Button fullwidth action={checkoutAction}>
+          {intl.formatMessage({ id: 'button:pay' })}
+        </Button>
 
       </div>
-    </div>
 
-    <div className="footer">
-      <div className="wrapper">
-        <div className="logo">logo</div>
-        <p className="copy">Copyright © 2019</p>
-      </div>
-    </div>
+    </AppLayout>
+  )
+}
 
-  </Fragment>
-)
+Checkout.propTypes = {
+  shoppingCart: PropTypes.object.isRequired
+}
 
-export default Checkout
+export default injectIntl(Checkout)

@@ -1,127 +1,32 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { injectIntl } from 'react-intl'
+import AppLayout from '../layouts/AppLayout'
+import ProductGrid from '../organisms/ProductGrid'
+import Pagination from '../molecules/Pagination'
+import IntroTitle from '../molecules/IntroTitle'
 
-const ProductList = () => (
-  <Fragment>
+const ProductList = ({ data, shoppingCart, intl }) => {
+  const { results, totalPages, page } = data
+  const productsTitle = intl.formatMessage({
+    id: 'title:products'
+  })
+  const productsSubitle = intl.formatMessage({
+    id: 'title:full-catalog'
+  })
+  return (
+    <AppLayout shoppingCart={shoppingCart}>
+      <IntroTitle title={productsTitle}
+                  subtitle={productsSubitle}/>
+      <ProductGrid products={results} />
+      <Pagination pages={totalPages} currentPage={page}/>
+    </AppLayout>
+  )
+}
 
-    <div className="header">
-      <div className="wrapper">
-        <div className="logo">logo</div>
-        <ul className="actions">
-          <li>Shop</li>
-          <li>Cart (0)</li>
-        </ul>
-      </div>
-    </div>
+ProductList.propTypes = {
+  data: PropTypes.object.isRequired,
+  shoppingCart: PropTypes.object.isRequired
+}
 
-    <div className="main-content wrapper">
-      <div className="">
-
-        <div className="intro-title">
-          <h1 className="beta">Products</h1>
-          <p className="subtitle">Full catalog</p>
-        </div>
-
-        <div className="grid-container">
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-          <div className="grid-item">
-            <div className="product-summary">
-              <div className="product-thumbnail">
-                <img src="https://colorlib.com/preview/theme/sublime/images/product_2.jpg"/>
-              </div>
-              <span className="product-title">Awesome Product</span>
-              <span className="product-price">$119.99</span>
-            </div>
-          </div>
-
-        </div>
-
-        <ul className="pagination-container">
-          <li className="pagination-item active">01</li>
-          <li className="pagination-item">02</li>
-          <li className="pagination-item">03</li>
-        </ul>
-
-      </div>
-    </div>
-
-    <div className="footer">
-      <div className="wrapper">
-        <div className="logo">logo</div>
-        <p className="copy">Copyright © 2019</p>
-      </div>
-    </div>
-
-  </Fragment>
-)
-
-export default ProductList
+export default injectIntl(ProductList)

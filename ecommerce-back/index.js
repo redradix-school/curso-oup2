@@ -26,8 +26,7 @@ const state = {
   products: require('./data/products.json')
 }
 
-// const cartFactory = () => ({ id: uuid(), items: [] })
-const cartFactory = () => ({ id: 'test', items: [] })
+const cartFactory = () => ({ id: uuid(), items: [] })
 
 // cart
 

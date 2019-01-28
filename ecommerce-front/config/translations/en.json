@@ -1,0 +1,48 @@
+{
+  "text:availability": "Availability",
+  "value:in-stock": "In stock",
+  "value:not-available": "Not available",
+  "title:products": "Products",
+  "title:full-catalog": "Full catalog",
+
+  "title:shopping-cart": "Shopping Cart",
+  "title:selected-products": "Selected products",
+
+  "title:cart-total": "Cart total",
+  "title:order-summary": "Order summary",
+  "button:to-checkout": "Proceed to Checkout",
+  "title:delivery-address": "Delivery Address",
+  "title:enter-address": "Enter your address info",
+  "title:delivery-method": "Delivery Method",
+  "title:messenger": "Messenger service",
+  "title:review-order": "Review your order",
+
+  "label:first-name": "First Name",
+  "label:last-name": "Last Name",
+  "label:address1": "Address (line 1)",
+  "label:address2": "Address (line 2)",
+  "label:pcode": "Postal Code",
+  "label:city": "City/Town",
+  "label:state": "State/Province",
+  "label:country": "Country",
+  "label:phone": "Phone",
+  "label:email": "Email",
+  "error:validation": "Invalid format",
+  "button:pay": "Purchase",
+  "error:required": "Required field",
+
+  "text:shop": "Shop",
+  "text:cart": "Cart",
+
+  "label:shipping": "Shipping",
+  "text:free": "Free",
+  "label:total": "Total",
+
+  "button:add-to-cart": "Add to Cart",
+
+  "title:related-products": "Related products",
+
+  "label:product": "Product",
+  "label:price": "Price",
+  "label:quantity": "Quantity"
+}

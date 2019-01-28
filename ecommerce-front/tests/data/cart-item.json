@@ -1,0 +1,11 @@
+{
+  "id": "el-traje-nuevo-del-title",
+  "title": "El traje nuevo del emperador",
+  "category": "books for children",
+  "price": {
+    "currency": "USD",
+    "amount": 1000
+  },
+  "img": "http://www.oupe.es/es/literatura-infantil-y-juvenil/infantil-cero-cinco/arbol-de-la-lectura/eltrajenuevodelemperador/Imagen%20para%20Visores/traje_nuevo_emperador_portada.jpg",
+  "quantity": 1
+}
