@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 import { injectIntl } from 'react-intl'
 import Card from '../molecules/Card'
 import CardRow from '../atoms/CardRow'
@@ -9,7 +10,7 @@ import Money from '../atoms/Money'
 
 const OrderSummary = ({ shoppingCart, title, subtitle, intl }) => {
   const { items } = shoppingCart
-  const total = items
+  const total = isEmpty(items) ? { amount: 0 } : items
         .map(item => ({ ...item.price, quantity: item.quantity }))
         .reduce((acc, price) => ({
           ...acc,

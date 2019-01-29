@@ -25,7 +25,7 @@ const validations = {
   'email': [isRequired]
 }
 
-function hasErrors(field, value) {
+function hasErrors(validations, field, value) {
   /* reusable if we pass validations as param */
   if (validations[field]) {
     return validations[field]
@@ -35,18 +35,18 @@ function hasErrors(field, value) {
   }
 }
 
-function formHandler(validations) {
+function useFormHandler(validations) {
   /* reusable for every similar form! */
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
   const onFieldChange = (name, value) => {
-    const error = hasErrors(name, value)
+    const error = hasErrors(validations, name, value)
     setValues({ ...values, [name]: value })
     setErrors({ ...errors, [name]: error })
   }
   const validateAll = () => {
     const errors = mapValues(
-      validations, (_, field) => hasErrors(field, values[field])
+      validations, (_, field) => hasErrors(validations, field, values[field])
     )
     setErrors(errors)
     return some(objValues(errors))
@@ -54,8 +54,8 @@ function formHandler(validations) {
   return [values, errors, onFieldChange, validateAll]
 }
 
-const Checkout = ({ shoppingCart, intl, onCheckout }) => {
-  const [values, errors, onFieldChange, validateAll] = formHandler(validations)
+const Checkout = ({ intl, shoppingCart, onCheckout }) => {
+  const [values, errors, onFieldChange, validateAll] = useFormHandler(validations)
   const [deliveryMethod, onDeliveryMethodChange] = useState('standard')
   const checkoutAction = () => {
     if (!validateAll()) onCheckout({ ...values, deliveryMethod })

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import { injectIntl } from 'react-intl'
 import AppLayout from '../layouts/AppLayout'
 import ShoppingCartItems from '../organisms/ShoppingCartItems'
-import Card from '../molecules/Card'
 import IntroTitle from '../molecules/IntroTitle'
 import OrderSummary from '../organisms/OrderSummary'
 import Button from '../atoms/Button'
 
-const ShoppingCart = ({ shoppingCart, intl, onModifyItemQuantity, onRemoveItem }) => (
+const ShoppingCart = ({ intl, history, shoppingCart, onModifyItemQuantity, onRemoveItem }) => (
   <AppLayout shoppingCart={shoppingCart}>
     <div className="shopping-cart-items">
       <IntroTitle title={intl.formatMessage({ id: 'title:shopping-cart' })}
@@ -22,7 +21,7 @@ const ShoppingCart = ({ shoppingCart, intl, onModifyItemQuantity, onRemoveItem }
       <OrderSummary shoppingCart={shoppingCart}
                     title={intl.formatMessage({ id: 'title:cart-total' })}
                     subtitle={intl.formatMessage({ id: 'title:order-summary' })} />
-      <Button fullwidth>
+      <Button fullwidth action={() => history.push('/checkout')}>
         {intl.formatMessage({ id: 'button:to-checkout'  })}
       </Button>
     </div>

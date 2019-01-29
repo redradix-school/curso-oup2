@@ -1,12 +1,14 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { MemoryRouter as Router } from 'react-router-dom'
+import { mount } from 'enzyme'
 import Pagination from '../../../src/ui/molecules/Pagination'
 
 describe('<Pagination />', () => {
 
-  const wrapper = shallow(
-    <Pagination pages={5}
-                currentPage={2} />
+  const wrapper = mount(
+    <Router>
+      <Pagination pages={5} currentPage={2} />
+    </Router>
   )
 
   it('mounts correctly', () => {

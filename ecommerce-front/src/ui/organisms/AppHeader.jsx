@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 
 const AppHeader = ({ shoppingCart }) => (
@@ -8,11 +9,15 @@ const AppHeader = ({ shoppingCart }) => (
       <div className="logo">logo</div>
       <ul className="actions">
         <li>
-          <FormattedMessage id="text:shop"/>
+          <Link to='/catalog'>
+            <FormattedMessage id="text:shop"/>
+          </Link>
         </li>
         <li>
-          <FormattedMessage id="text:cart"/>
-          {` (${ shoppingCart.items.length })`}
+          <Link to='/cart'>
+            <FormattedMessage id="text:cart"/>
+            {` (${ shoppingCart.items.length })`}
+          </Link>
         </li>
       </ul>
     </div>

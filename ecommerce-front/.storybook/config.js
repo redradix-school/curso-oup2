@@ -1,18 +1,21 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { configure, addDecorator  } from '@storybook/react'
 import { IntlProvider } from 'react-intl'
 import setupI18n from '../src/lib/setup-i18n'
 
-import '../src/styles.css'
+import '../public/styles.css'
 
 // i18n
 
 const locale = 'es-ES'
 
 addDecorator(story => (
-  <IntlProvider messages={setupI18n(locale)} locale={locale}>
-    {story()}
-  </IntlProvider>
+  <Router>
+    <IntlProvider messages={setupI18n(locale)} locale={locale}>
+      {story()}
+    </IntlProvider>
+  </Router>
 ))
 
 // stories

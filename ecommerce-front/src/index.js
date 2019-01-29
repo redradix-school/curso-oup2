@@ -2,11 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// provider
+import StateContext from './app/lib/StateContext'
+// infrastructure
+import config from './config'
+import xhr from './infrastructure/xhr.js'
+// services
+import useServices from './app/lib/use-services'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const infra = {
+  xhr: xhr(config)
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const Wrapper = () => {
+  const services = useServices(infra)
+  return (
+    <StateContext.Provider value={services}>
+      <App />
+    </StateContext.Provider>
+  )
+}
+
+ReactDOM.render(
+  <Wrapper />,
+  document.getElementById('root')
+);

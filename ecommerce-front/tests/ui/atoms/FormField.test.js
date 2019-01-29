@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import { identity } from 'lodash'
 import FormField from '../../../src/ui/atoms/FormField'
 
 describe('<FormField />', () => {
@@ -9,6 +10,7 @@ describe('<FormField />', () => {
                value="1"
                label="test field"
                half
+               onChange={identity}
                error="test error" />
   )
 
@@ -23,13 +25,13 @@ describe('<FormField />', () => {
   })
 
   it('only applies the "half" when half prop is true', () => {
-    const full = shallow(<FormField name="full" />)
+    const full = shallow(<FormField name="full" onChange={identity}/>)
     expect(wrapper.exists('.half')).toBe(true)
     expect(full.exists('.half')).toBe(false)
   })
 
   it('only shows the error message when present', () => {
-    const noError = shallow(<FormField name="full" />)
+    const noError = shallow(<FormField name="full" onChange={identity}/>)
     expect(
       wrapper.find('.error-message').text()
     ).toBe('test error')

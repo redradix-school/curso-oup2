@@ -1,0 +1,48 @@
+{
+  "text:availability": "Disponibilidad",
+  "value:in-stock": "Disponible",
+  "value:not-available": "No disponible",
+  "title:products": "Productos",
+  "title:full-catalog": "Catálogo completo",
+
+  "title:shopping-cart": "Carrito de la compra",
+  "title:selected-products": "Productos seleccionados",
+
+  "title:cart-total": "Total en el carrito",
+  "title:order-summary": "Resumen del pedido",
+  "button:to-checkout": "Continuar con el pago",
+  "title:delivery-address": "Dirección de envío",
+  "title:enter-address": "Introduce tu dirección",
+  "title:delivery-method": "Método de envío",
+  "title:messenger": "Servicio de mensajería",
+  "title:review-order": "Revisa tu compra",
+
+  "label:first-name": "Nombre",
+  "label:last-name": "Apellidos",
+  "label:address1": "Dirección (línea 1)",
+  "label:address2": "Dirección (línea 2)",
+  "label:pcode": "Código Postal",
+  "label:city": "Localidad",
+  "label:state": "Provincia",
+  "label:country": "País",
+  "label:phone": "Teléfono",
+  "label:email": "Email",
+  "error:validation": "Formato no válido",
+  "button:pay": "Aceptar y pagar",
+  "error:required": "Campo obligatorio",
+
+  "text:shop": "Tienda",
+  "text:cart": "Carrito",
+
+  "label:shipping": "Envío",
+  "text:free": "Gratis",
+  "label:total": "Total",
+
+  "button:add-to-cart": "Añadir al carrito",
+
+  "title:related-products": "Productos similares",
+
+  "label:product": "Producto",
+  "label:price": "Precio",
+  "label:quantity": "Cantidad"
+}

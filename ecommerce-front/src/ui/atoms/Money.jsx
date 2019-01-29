@@ -8,6 +8,7 @@ const Money = ({ price, quantity, total }) => (
     'product-price': !total,
     'product-total': total
   })}>
+    {/* eslint-disable-next-line */}
     <FormattedNumber style="currency"
                      currency={price.currency}
                      value={(quantity * price.amount / 100)}

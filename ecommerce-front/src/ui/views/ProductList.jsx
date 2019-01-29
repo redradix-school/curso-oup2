@@ -19,7 +19,7 @@ const ProductList = ({ data, shoppingCart, intl }) => {
       <IntroTitle title={productsTitle}
                   subtitle={productsSubitle}/>
       <ProductGrid products={results} />
-      <Pagination pages={totalPages} currentPage={page}/>
+      <Pagination url='/catalog' pages={totalPages} currentPage={page}/>
     </AppLayout>
   )
 }

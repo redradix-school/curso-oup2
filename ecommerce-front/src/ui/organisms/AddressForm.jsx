@@ -42,4 +42,10 @@ const AddressForm = ({ intl, values, errors, onFieldChange }) => {
   )
 }
 
+AddressForm.propTypes = {
+  values: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  onFieldChange: PropTypes.func.isRequired
+}
+
 export default injectIntl(AddressForm)
