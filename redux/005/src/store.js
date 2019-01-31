@@ -1,4 +1,4 @@
 import { createStore, combineReducers } from 'redux'
-import counter from 'modules/counter'
+import form from 'modules/form'
 
-export default createStore(combineReducers({ counter }))
+export default createStore(combineReducers({ form }))

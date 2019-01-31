@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { increment } from 'modules/counter/actionCreators'
+import { getCounterValue } from 'modules/counter/selectors'
 
 class Counter extends React.Component {
   render() {
@@ -13,10 +14,11 @@ class Counter extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ value: state.counter })
+const mapStateToProps = state => ({
+  value: getCounterValue(state)
+})
 const mapDispatchToProps = dispatch => ({
   increment: (n) => dispatch(increment(n))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter)
-

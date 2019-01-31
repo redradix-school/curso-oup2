@@ -1,27 +1,55 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, combineReducers } from 'redux'
+import { connect, Provider } from 'react-redux'
 
-const Counter = (props) => <h1> {props.value} </h1>
+// component
 
-function counter(state = 0, action) {
+const CounterItem = ({ value, increment }) => (
+
+)
+
+const Counter = ({ value, increment }) => (
+  <Fragment>
+    <button onClick={() => increment()}>
+      Incrementar
+    </button>
+    <h1>{value}</h1>
+  </Fragment>
+)
+
+const ConnectedCounter = connect(
+  (state, ownProps) => ({
+    value: state.counter[ownProps.id]
+  }),
+  (dispatch, ownProps) => ({
+    increment: () => dispatch({
+      type: 'INCREMENT', payload: { id: ownProps.id }
+    })
+  })
+)(Counter)
+
+// redux
+
+function counter(state = {}, action) {
+  const { payload: { id } } = action
   switch(action.type) {
     case 'INCREMENT':
-      return state + 1
+      return { ...state, [id]: (state[id] || 0) + 1 }
     default:
       return state
   }
 }
-
 const store = createStore(combineReducers({ counter }))
 
-store.subscribe(() => {
-  const state = store.getState()
-  ReactDOM.render(<Counter value={state.counter} />, document.getElementById('app'))
-})
-
-// action
+// initial mount
 window.onload = () => {
-  store.dispatch({ type: 'INCREMENT' })
-  store.dispatch({ type: 'INCREMENT' })
+  ReactDOM.render(
+    <Provider store={store}>
+      <ConnectedCounter id='uno'/>
+      <ConnectedCounter id='dos'/>
+      <ConnectedCounter id='tres'/>
+    </Provider>
+    document.getElementById('app')
+  )
 }
