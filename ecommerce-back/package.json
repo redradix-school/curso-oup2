@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/bin/server",
+    "develop": "nodemon src/bin/server"
   },
   "author": "elias@redradix.com",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "casual": "^1.6.0",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
+    "nodemon": "^1.18.9",
+    "sqlite3": "^4.0.6",
     "uuid": "^3.3.2"
   }
 }
